@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 300px;
+      padding: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .header h1 {
+      font-size: 18px;
+      margin: 0;
+      color: #1a73e8;
+    }
+    
+    .status {
+      background: #f8f9fa;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    
+    .status-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    
+    .status-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .status-label {
+      font-weight: 500;
+    }
+    
+    .status-value {
+      color: #666;
+    }
+    
+    .status-value.active {
+      color: #34a853;
+      font-weight: 500;
+    }
+    
+    .status-value.inactive {
+      color: #ea4335;
+    }
+    
+    .toggle-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding: 15px;
+      background: #f8f9fa;
+      border-radius: 8px;
+    }
+    
+    .toggle-label {
+      font-weight: 500;
+    }
+    
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+    }
+    
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 24px;
+    }
+    
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    
+    input:checked + .slider {
+      background-color: #1a73e8;
+    }
+    
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+    
+    .phrases {
+      margin-bottom: 20px;
+    }
+    
+    .phrases h3 {
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    
+    .phrase-list {
+      background: #f8f9fa;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+    
+    .phrase-item {
+      margin-bottom: 4px;
+      color: #666;
+    }
+    
+    .phrase-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .instructions {
+      font-size: 12px;
+      color: #666;
+      line-height: 1.4;
+      background: #e8f0fe;
+      padding: 12px;
+      border-radius: 6px;
+    }
+    
+    .loading {
+      text-align: center;
+      color: #666;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Meet Auto Leave</h1>
+  </div>
+  
+  <div id="loading" class="loading">
+    Loading...
+  </div>
+  
+  <div id="content" style="display: none;">
+    <div class="status">
+      <div class="status-item">
+        <span class="status-label">Extension:</span>
+        <span id="extension-status" class="status-value">Active</span>
+      </div>
+      <div class="status-item">
+        <span class="status-label">Listening:</span>
+        <span id="listening-status" class="status-value">Inactive</span>
+      </div>
+      <div class="status-item">
+        <span class="status-label">In Meeting:</span>
+        <span id="meeting-status" class="status-value">No</span>
+      </div>
+    </div>
+    
+    <div class="toggle-container">
+      <span class="toggle-label">Enable Auto Leave</span>
+      <label class="switch">
+        <input type="checkbox" id="enableToggle" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+    
+    <div class="phrases">
+      <h3>Trigger Phrases:</h3>
+      <div class="phrase-list">
+        <div class="phrase-item">"great meeting you bye"</div>
+        <div class="phrase-item">"talk to you later"</div>
+        <div class="phrase-item">"see you later"</div>
+        <div class="phrase-item">"have a good day"</div>
+        <div class="phrase-item">"thanks everyone bye"</div>
+        <div class="phrase-item">"alright bye everyone"</div>
+        <div class="phrase-item">"catch you later"</div>
+        <div class="phrase-item">"bye bye"</div>
+      </div>
+    </div>
+    
+    <div class="instructions">
+      <strong>How it works:</strong><br>
+      Say any trigger phrase during a Google Meet call, and the extension will automatically leave the meeting after a 5-second countdown. You can cancel by clicking the "Cancel" button that appears.
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>

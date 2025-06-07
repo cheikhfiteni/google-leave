@@ -1,0 +1,26 @@
+
+{
+    "manifest_version": 3,
+    "name": "Google Meet Auto Leave",
+    "version": "1.0",
+    "description": "Automatically leave Google Meet calls when you say goodbye phrases",
+    "permissions": [
+      "activeTab",
+      "scripting"
+    ],
+    "content_scripts": [
+      {
+        "matches": ["https://meet.google.com/*"],
+        "js": ["content.js"],
+        "run_at": "document_end"
+      }
+    ],
+    "action": {
+      "default_popup": "popup.html",
+      "default_title": "Google Meet Auto Leave"
+    },
+    "icons": {
+      "16": "icons/favicon-16x16.png",
+      "32": "icons/favicon-32x32.png"
+    }
+  }
