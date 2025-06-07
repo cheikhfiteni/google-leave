@@ -1,7 +1,7 @@
 
 {
     "manifest_version": 3,
-    "name": "Google Meet Auto Leave",
+    "name": "Google Leave",
     "version": "1.0",
     "description": "Automatically leave Google Meet calls when you say goodbye phrases",
     "permissions": [
